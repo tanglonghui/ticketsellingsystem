@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ironman.ticketsellingsystem.dao.UserDao">
+    <!--使用-->
+    <resultMap id="BaseResultMap" type="org.ironman.ticketsellingsystem.entity.UserEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="account" property="account" jdbcType="CHAR"/>
+        <result column="password" property="password" jdbcType="CHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="id_card" property="idCard" jdbcType="INTEGER"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="emal" property="emal" jdbcType="CHAR"/>
+        <result column="state" property="state" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--select id需要与dao的方法名一致-->
+    <!--通过返回值的数量判断返回true还是false-->
+    <select id="checkRegister" parameterType="String" resultType="boolean">
+    select count(account)from user where account= #{account}
+  </select>
+    <!--通过返回值的数量判断返回true还是false,多个标识时，在dao中需要用@Param标签标识-->
+    <select id="checkLogin" parameterType="String" resultType="boolean">
+    select count(id)from user where account = #{account}and password= #{password}
+  </select>
+    <!--插入操作-->
+    <insert id="insertUser" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
+   insert into user (id, account, password,
+            name, age, id_card,
+            sex, phone, type,
+            emal, state)
+        values (#{id,jdbcType=INTEGER}, #{account,jdbcType=CHAR}, #{password,jdbcType=CHAR},
+            #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{idCard,jdbcType=INTEGER},
+            #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+            #{emal,jdbcType=CHAR}, #{state,jdbcType=VARCHAR})
+  </insert>
+    <update id="updateUser" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
+        update user
+        set account = #{account,jdbcType=CHAR},
+            password = #{password,jdbcType=CHAR},
+            name = #{name,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            id_card = #{idCard,jdbcType=INTEGER},
+            sex = #{sex,jdbcType=VARCHAR},
+            phone = #{phone,jdbcType=VARCHAR},
+            type = #{type,jdbcType=VARCHAR},
+            emal = #{emal,jdbcType=CHAR},
+            state = #{state,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectUser" parameterType="int" resultType="org.ironman.ticketsellingsystem.entity.UserEntity">
+    select * from user where id= #{id}
+  </select>
+    <!--<update id="updateUserPassword" parameterType="String">-->
+        <!--update user-->
+        <!--set account = #{account,jdbcType=CHAR},-->
+            <!--password = #{password,jdbcType=CHAR},-->
+            <!--name = #{name,jdbcType=VARCHAR},-->
+            <!--age = #{age,jdbcType=INTEGER},-->
+            <!--id_card = #{idCard,jdbcType=INTEGER},-->
+            <!--sex = #{sex,jdbcType=VARCHAR},-->
+            <!--phone = #{phone,jdbcType=VARCHAR},-->
+            <!--type = #{type,jdbcType=VARCHAR},-->
+            <!--emal = #{emal,jdbcType=CHAR},-->
+            <!--state = #{state,jdbcType=VARCHAR}-->
+        <!--where id = #{id,jdbcType=INTEGER}-->
+    <!--</update>-->
+</mapper>
