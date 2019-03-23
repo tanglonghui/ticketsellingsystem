@@ -5,7 +5,7 @@ public class Test {
        Test2();
     }
 
-    public static void Test1() {
+    public static  void Test1() {
         String str = "你好1";
         byte[] i1 = str.getBytes();
         for (byte i :
