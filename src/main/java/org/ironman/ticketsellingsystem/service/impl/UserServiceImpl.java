@@ -10,12 +10,13 @@ import javax.annotation.Resource;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
-    BaseResult baseResult=new BaseResult();
+    BaseResult baseResult;
     @Resource
     UserDao userDao;
 
     @Override
     public BaseResult login(String account, String password) {
+        baseResult=new BaseResult();
         if (userDao.checkLogin(account, password)){
 
         }else {
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult register(UserEntity userEntity) {
+        baseResult=new BaseResult();
         if (userDao.checkRegister(userEntity.getAccount())){
             baseResult.setSuccess(false);
             baseResult.setMessage("该账号已经注册");
@@ -40,6 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult updateUser(UserEntity userEntity) {
+        baseResult=new BaseResult();
         if (userDao.updateUser(userEntity)==1){
             baseResult.setSuccess(true);
             baseResult.setMessage("资料更改成功");
@@ -52,6 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult selectUser(int id) {
+        baseResult=new BaseResult();
         UserEntity userEntity=userDao.selectUser(id);
         if (userEntity!=null){
             baseResult.setSuccess(true);
@@ -63,8 +67,22 @@ public class UserServiceImpl implements UserService {
         return baseResult;
     }
 
-//    @Override
-//    public BaseResult updateUserPassword(int id,String old, String reset) {
-//        return null;
-//    }
+    @Override
+    public BaseResult updatePassword(String account, String old, String password) {
+        baseResult=new BaseResult();
+        if (userDao.checkLogin(account,old)){
+           if (userDao.updateUserPassword(account,old,password)==1){
+               baseResult.setSuccess(true);
+               baseResult.setMessage("密码修改成功");
+           }else {
+               baseResult.setSuccess(false);
+               baseResult.setMessage("密码修改失败");
+           }
+        }else {
+            baseResult.setSuccess(true);
+            baseResult.setMessage("原密码不正确");
+        }
+        return baseResult;
+    }
+
 }

@@ -14,6 +14,8 @@ public interface UserDao {
     int updateUser(UserEntity userEntity);
     //通过id 查询用户信息
     UserEntity selectUser(int id);
-//    //返回值是更新的条目数量
-//    int updateUserPassword(@Param("id")int id,@Param("old")String old, @Param("password")String password);
+    //修改账号密码 返回值是更新的条目数量
+    int updateUserPassword(@Param("account")String account,@Param("old")String old, @Param("password")String password);
+    //修改用户信息 返回值是更新的条目数量
+    int updateUserInfo(UserEntity userEntity);
 }

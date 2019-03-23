@@ -39,4 +39,10 @@ public class UserController {
     public BaseResult selectUser(int id) {
         return userService.selectUser(id);
     }
+
+    //登录
+    @RequestMapping("updatePassword")
+    public BaseResult updadtePassword(HttpServletRequest request) {
+        return userService.updatePassword(request.getParameter("account"),request.getParameter("password"),request.getParameter("password"));
+    }
 }

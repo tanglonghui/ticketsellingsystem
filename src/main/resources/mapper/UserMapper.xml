@@ -53,19 +53,26 @@
     </update>
     <select id="selectUser" parameterType="int" resultType="org.ironman.ticketsellingsystem.entity.UserEntity">
     select * from user where id= #{id}
-  </select>
-    <!--<update id="updateUserPassword" parameterType="String">-->
-        <!--update user-->
-        <!--set account = #{account,jdbcType=CHAR},-->
-            <!--password = #{password,jdbcType=CHAR},-->
-            <!--name = #{name,jdbcType=VARCHAR},-->
-            <!--age = #{age,jdbcType=INTEGER},-->
-            <!--id_card = #{idCard,jdbcType=INTEGER},-->
-            <!--sex = #{sex,jdbcType=VARCHAR},-->
-            <!--phone = #{phone,jdbcType=VARCHAR},-->
-            <!--type = #{type,jdbcType=VARCHAR},-->
-            <!--emal = #{emal,jdbcType=CHAR},-->
-            <!--state = #{state,jdbcType=VARCHAR}-->
-        <!--where id = #{id,jdbcType=INTEGER}-->
-    <!--</update>-->
+    </select>
+
+    <update id="updateUserInfo" parameterType="UserEntity">
+        update user
+        set account = #{account,jdbcType=CHAR},
+            password = #{password,jdbcType=CHAR},
+            name = #{name,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            id_card = #{idCard,jdbcType=INTEGER},
+            sex = #{sex,jdbcType=VARCHAR},
+            phone = #{phone,jdbcType=VARCHAR},
+            type = #{type,jdbcType=VARCHAR},
+            emal = #{emal,jdbcType=CHAR},
+            state = #{state,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateUserPassword" parameterType="UserEntity">
+        update user
+        set password = #{password,jdbcType=CHAR},
+         where  account = #{account,jdbcType=CHAR}
+    </update>
 </mapper>

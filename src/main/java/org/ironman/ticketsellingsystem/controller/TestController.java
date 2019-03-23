@@ -50,7 +50,8 @@ public class TestController {
 //        userEntity.setName("2");
 //        userEntity.setSex("2222");
 //        userEntity.setState("1");
-
+String str="1";
+int i=Integer.parseInt(str);
         return userService.selectUser(10);
     }
 }
