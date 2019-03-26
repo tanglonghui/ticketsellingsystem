@@ -18,7 +18,8 @@ public class UserServiceImpl implements UserService {
     public BaseResult login(String account, String password) {
         baseResult=new BaseResult();
         if (userDao.checkLogin(account, password)){
-
+            baseResult.setSuccess(true);
+            baseResult.setList(userDao.selectUser(account));
         }else {
             baseResult.setSuccess(false);
             baseResult.setMessage("账号或密码错误");
@@ -56,7 +57,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public BaseResult selectUser(int id) {
         baseResult=new BaseResult();
-        UserEntity userEntityEntity =userDao.selectUser(id);
+        UserEntity userEntityEntity =userDao.selectByPrimaryKey(id);
         if (userEntityEntity !=null){
             baseResult.setSuccess(true);
             baseResult.setData(userEntityEntity);

@@ -193,8 +193,8 @@
             state = #{state,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <select id="selectUser" parameterType="int" resultMap="BaseResultMap">
-    select * from user where id= #{id}
+    <select id="selectUser" parameterType="String" resultMap="BaseResultMap">
+    select * from user where account= #{account}
     </select>
 
     <update id="updateUserInfo" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">

@@ -26,11 +26,13 @@ public class TrainEntity {
     /**
      * 开始时间
      */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private Date startTime;
 
     /**
      * 结束时间
      */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private Date endTime;
 
     /**
@@ -62,7 +64,7 @@ public class TrainEntity {
      * 商务座价格
      */
     private Integer businessPrice;
-
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date trainTime;
 
     public Integer getId() {
@@ -161,7 +163,7 @@ public class TrainEntity {
         this.businessPrice = businessPrice;
     }
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     public Date getTrainTime() {
         return trainTime;
     }
