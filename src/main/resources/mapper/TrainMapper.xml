@@ -201,4 +201,11 @@
         where train_time =#{trainTime,jdbcType=DATE}
     </select>
 
+    <select id="selectByCard" resultMap="BaseResultMap" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
+        select
+        <include refid="Base_Column_List" />
+        from train
+        where train_card = #{trainCard ,jdbcType=CHAR}
+    </select>
+
 </mapper>

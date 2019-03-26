@@ -25,4 +25,14 @@ public class TrainServiceImpl implements TrainService {
         baseResult.setList(trainMapper.selectByDate(trainEntity));
         return baseResult;
     }
+
+    @Override
+    public BaseResult trainListByCard(String trainCard) {
+        baseResult =new BaseResult();
+        baseResult.setSuccess(true);
+        TrainEntity trainEntity=new TrainEntity();
+        trainEntity.setTrainCard(trainCard);
+        baseResult.setList(trainMapper.selectByCard(trainEntity));
+        return baseResult;
+    }
 }

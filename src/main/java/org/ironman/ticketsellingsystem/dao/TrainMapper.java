@@ -20,4 +20,5 @@ public interface TrainMapper {
     int updateByPrimaryKey(TrainEntity record);
 
     TrainEntity selectByDate(TrainEntity record);
+    TrainEntity selectByCard(TrainEntity record);
 }

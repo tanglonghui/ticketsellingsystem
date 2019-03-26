@@ -13,7 +13,12 @@ public class TrainController {
     private TrainService trainService;
     //获得列车时刻表
     @RequestMapping("/trainList")
-    public BaseResult trainList(TrainEntity trainEntity){
+    public BaseResult getTrainListbyTime(TrainEntity trainEntity){
         return trainService.trainList(trainEntity.getTrainTime());
+    }
+    //获得列车时刻表
+    @RequestMapping("/trainListCard")
+    public BaseResult getTrainListbyId(TrainEntity trainEntity){
+        return trainService.trainListByCard(trainEntity.getTrainCard());
     }
 }
