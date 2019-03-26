@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2019-03-26 15:41:24
+Date: 2019-03-26 17:27:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,7 +55,7 @@ INSERT INTO `test` VALUES ('2', '123');
 DROP TABLE IF EXISTS `train`;
 CREATE TABLE `train` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `train_card` char(1) NOT NULL COMMENT '火车型号 如 k996',
+  `train_card` char(250) NOT NULL COMMENT '火车型号 如 k996',
   `start_place` varchar(255) NOT NULL COMMENT '起点',
   `end_place` varchar(255) NOT NULL COMMENT '终点',
   `start_time` datetime NOT NULL COMMENT '开始时间',
@@ -66,12 +66,14 @@ CREATE TABLE `train` (
   `second_seat_price` int(11) NOT NULL COMMENT '二等座位数价格',
   `business_seat` varchar(255) NOT NULL COMMENT '商务座数量',
   `business_price` int(11) NOT NULL COMMENT '商务座价格',
+  `train_time` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of train
 -- ----------------------------
+INSERT INTO `train` VALUES ('1', 'k-747', '长沙', '北京', '2019-03-26 16:22:25', '2019-03-27 16:22:32', '100', '100', '100', '50', '100', '200', '2019-03-26');
 
 -- ----------------------------
 -- Table structure for user
