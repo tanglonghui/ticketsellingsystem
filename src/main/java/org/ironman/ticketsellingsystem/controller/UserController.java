@@ -39,7 +39,7 @@ public class UserController {
         return userService.selectUser(id);
     }
 
-    //登录
+    //修改密码
     @RequestMapping("updatePassword")
     public BaseResult updadtePassword(HttpServletRequest request) {
         return userService.updatePassword(request.getParameter("account"),request.getParameter("password"),request.getParameter("password"));

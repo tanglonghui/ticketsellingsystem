@@ -1,5 +1,7 @@
 package org.ironman.ticketsellingsystem.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 
@@ -60,6 +62,8 @@ public class TrainEntity {
      * 商务座价格
      */
     private Integer businessPrice;
+
+    private Date trainTime;
 
     public Integer getId() {
         return id;
@@ -155,5 +159,14 @@ public class TrainEntity {
 
     public void setBusinessPrice(Integer businessPrice) {
         this.businessPrice = businessPrice;
+    }
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    public Date getTrainTime() {
+        return trainTime;
+    }
+
+    public void setTrainTime(Date trainTime) {
+        this.trainTime = trainTime;
     }
 }

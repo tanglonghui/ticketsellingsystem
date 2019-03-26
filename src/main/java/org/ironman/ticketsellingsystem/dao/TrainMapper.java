@@ -3,6 +3,9 @@ package org.ironman.ticketsellingsystem.dao;
 
 import org.ironman.ticketsellingsystem.entity.TrainEntity;
 
+import java.util.Date;
+import java.util.List;
+
 public interface TrainMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +18,6 @@ public interface TrainMapper {
     int updateByPrimaryKeySelective(TrainEntity record);
 
     int updateByPrimaryKey(TrainEntity record);
+
+    TrainEntity selectByDate(TrainEntity record);
 }

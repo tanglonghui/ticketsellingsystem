@@ -15,15 +15,16 @@
         <result column="second_seat_price" property="secondSeatPrice" jdbcType="INTEGER" />
         <result column="business_seat" property="businessSeat" jdbcType="VARCHAR" />
         <result column="business_price" property="businessPrice" jdbcType="INTEGER" />
+        <result column="train_time" property="trainTime" jdbcType="DATE" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, train_card, start_place, end_place, start_time, end_time, first_seat, first_seat_price, 
-        second_seat, second_seat_price, business_seat, business_price
+        id, train_card, start_place, end_place, start_time, end_time, first_seat, first_seat_price,
+        second_seat, second_seat_price, business_seat, business_price, train_time
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-        select 
+        select
         <include refid="Base_Column_List" />
         from train
         where id = #{id,jdbcType=INTEGER}
@@ -35,16 +36,16 @@
     </delete>
 
     <insert id="insert" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity" >
-        insert into train (id, train_card, start_place, 
-            end_place, start_time, end_time, 
-            first_seat, first_seat_price, second_seat, 
-            second_seat_price, business_seat, business_price
-            )
-        values (#{id,jdbcType=INTEGER}, #{trainCard,jdbcType=CHAR}, #{startPlace,jdbcType=VARCHAR}, 
-            #{endPlace,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-            #{firstSeat,jdbcType=VARCHAR}, #{firstSeatPrice,jdbcType=INTEGER}, #{secondSeat,jdbcType=VARCHAR}, 
-            #{secondSeatPrice,jdbcType=INTEGER}, #{businessSeat,jdbcType=VARCHAR}, #{businessPrice,jdbcType=INTEGER}
-            )
+        insert into train (id, train_card, start_place,
+            end_place, start_time, end_time,
+            first_seat, first_seat_price, second_seat,
+            second_seat_price, business_seat, business_price,
+            train_time)
+        values (#{id,jdbcType=INTEGER}, #{trainCard,jdbcType=CHAR}, #{startPlace,jdbcType=VARCHAR},
+            #{endPlace,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
+            #{firstSeat,jdbcType=VARCHAR}, #{firstSeatPrice,jdbcType=INTEGER}, #{secondSeat,jdbcType=VARCHAR},
+            #{secondSeatPrice,jdbcType=INTEGER}, #{businessSeat,jdbcType=VARCHAR}, #{businessPrice,jdbcType=INTEGER},
+            #{trainTime,jdbcType=DATE})
     </insert>
 
     <insert id="insertSelective" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity" >
@@ -86,6 +87,9 @@
             <if test="businessPrice != null" >
                 business_price,
             </if>
+            <if test="trainTime != null" >
+                train_time,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -123,6 +127,9 @@
             </if>
             <if test="businessPrice != null" >
                 #{businessPrice,jdbcType=INTEGER},
+            </if>
+            <if test="trainTime != null" >
+                #{trainTime,jdbcType=DATE},
             </if>
         </trim>
     </insert>
@@ -163,6 +170,9 @@
             <if test="businessPrice != null" >
                 business_price = #{businessPrice,jdbcType=INTEGER},
             </if>
+            <if test="trainTime != null" >
+                train_time = #{trainTime,jdbcType=DATE},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -179,7 +189,16 @@
             second_seat = #{secondSeat,jdbcType=VARCHAR},
             second_seat_price = #{secondSeatPrice,jdbcType=INTEGER},
             business_seat = #{businessSeat,jdbcType=VARCHAR},
-            business_price = #{businessPrice,jdbcType=INTEGER}
+            business_price = #{businessPrice,jdbcType=INTEGER},
+            train_time = #{trainTime,jdbcType=DATE}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="selectByDate" resultMap="BaseResultMap" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
+        select
+        <include refid="Base_Column_List" />
+        from train
+        where train_time =#{trainTime,jdbcType=DATE}
+    </select>
+
 </mapper>
