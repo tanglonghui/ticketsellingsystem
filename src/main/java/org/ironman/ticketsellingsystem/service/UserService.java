@@ -7,9 +7,9 @@ public interface UserService {
     //登录操作
     BaseResult login(String account, String password);
     //注册操作
-    BaseResult register(UserEntity userEntity);
+    BaseResult register(UserEntity userEntityEntity);
     //修改个人用户信息操作
-    BaseResult updateUser(UserEntity userEntity);
+    BaseResult updateUser(UserEntity userEntityEntity);
     //查询操作
     BaseResult selectUser(int id);
     //修改密码

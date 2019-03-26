@@ -1,22 +1,164 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ironman.ticketsellingsystem.dao.UserMapper" >
 
-<mapper namespace="org.ironman.ticketsellingsystem.dao.UserDao">
-    <!--使用-->
-    <resultMap id="BaseResultMap" type="org.ironman.ticketsellingsystem.entity.UserEntity">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="account" property="account" jdbcType="CHAR"/>
-        <result column="password" property="password" jdbcType="CHAR"/>
-        <result column="name" property="name" jdbcType="VARCHAR"/>
-        <result column="age" property="age" jdbcType="INTEGER"/>
-        <result column="id_card" property="idCard" jdbcType="INTEGER"/>
-        <result column="sex" property="sex" jdbcType="VARCHAR"/>
-        <result column="phone" property="phone" jdbcType="VARCHAR"/>
-        <result column="type" property="type" jdbcType="VARCHAR"/>
-        <result column="emal" property="emal" jdbcType="CHAR"/>
-        <result column="state" property="state" jdbcType="VARCHAR"/>
+    <resultMap id="BaseResultMap" type="org.ironman.ticketsellingsystem.entity.UserEntity" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="account" property="account" jdbcType="CHAR" />
+        <result column="password" property="password" jdbcType="CHAR" />
+        <result column="name" property="name" jdbcType="CHAR" />
+        <result column="age" property="age" jdbcType="CHAR" />
+        <result column="sex" property="sex" jdbcType="CHAR" />
+        <result column="id_card" property="idCard" jdbcType="INTEGER" />
+        <result column="id_card_type" property="idCardType" jdbcType="CHAR" />
+        <result column="phone" property="phone" jdbcType="INTEGER" />
+        <result column="state" property="state" jdbcType="CHAR" />
     </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, account, password, name, age, sex, id_card, id_card_type, phone, state
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity" >
+        insert into user (id, account, password, 
+            name, age, sex, id_card, 
+            id_card_type, phone, state
+            )
+        values (#{id,jdbcType=INTEGER}, #{account,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
+            #{name,jdbcType=CHAR}, #{age,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{idCard,jdbcType=INTEGER}, 
+            #{idCardType,jdbcType=CHAR}, #{phone,jdbcType=INTEGER}, #{state,jdbcType=CHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity" >
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="account != null" >
+                account,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+            <if test="sex != null" >
+                sex,
+            </if>
+            <if test="idCard != null" >
+                id_card,
+            </if>
+            <if test="idCardType != null" >
+                id_card_type,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="account != null" >
+                #{account,jdbcType=CHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=CHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=CHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=CHAR},
+            </if>
+            <if test="sex != null" >
+                #{sex,jdbcType=CHAR},
+            </if>
+            <if test="idCard != null" >
+                #{idCard,jdbcType=INTEGER},
+            </if>
+            <if test="idCardType != null" >
+                #{idCardType,jdbcType=CHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=INTEGER},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity" >
+        update user
+        <set >
+            <if test="account != null" >
+                account = #{account,jdbcType=CHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=CHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=CHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=CHAR},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex,jdbcType=CHAR},
+            </if>
+            <if test="idCard != null" >
+                id_card = #{idCard,jdbcType=INTEGER},
+            </if>
+            <if test="idCardType != null" >
+                id_card_type = #{idCardType,jdbcType=CHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=INTEGER},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=CHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity" >
+        update user
+        set account = #{account,jdbcType=CHAR},
+            password = #{password,jdbcType=CHAR},
+            name = #{name,jdbcType=CHAR},
+            age = #{age,jdbcType=CHAR},
+            sex = #{sex,jdbcType=CHAR},
+            id_card = #{idCard,jdbcType=INTEGER},
+            id_card_type = #{idCardType,jdbcType=CHAR},
+            phone = #{phone,jdbcType=INTEGER},
+            state = #{state,jdbcType=CHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <!--使用-->
+
     <!--select id需要与dao的方法名一致-->
     <!--通过返回值的数量判断返回true还是false-->
     <select id="checkRegister" parameterType="String" resultType="boolean">
@@ -51,11 +193,11 @@
             state = #{state,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <select id="selectUser" parameterType="int" resultType="org.ironman.ticketsellingsystem.entity.UserEntity">
+    <select id="selectUser" parameterType="int" resultMap="BaseResultMap">
     select * from user where id= #{id}
     </select>
 
-    <update id="updateUserInfo" parameterType="UserEntity">
+    <update id="updateUserInfo" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
         update user
         set account = #{account,jdbcType=CHAR},
             password = #{password,jdbcType=CHAR},
@@ -70,7 +212,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateUserPassword" parameterType="UserEntity">
+    <update id="updateUserPassword" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
         update user
         set password = #{password,jdbcType=CHAR},
          where  account = #{account,jdbcType=CHAR}

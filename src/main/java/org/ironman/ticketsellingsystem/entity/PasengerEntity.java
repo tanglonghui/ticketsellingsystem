@@ -2,14 +2,34 @@ package org.ironman.ticketsellingsystem.entity;
 
 
 public class PasengerEntity {
+    /**
+     * 主键
+     */
     private Integer id;
 
+    /**
+     * 姓名
+     */
     private String name;
 
+    /**
+     * 证件号
+     */
     private String idCard;
 
-    private String phone;
+    /**
+     * 证件号类型
+     */
+    private String idCardType;
 
+    /**
+     * 电话
+     */
+    private Integer phone;
+
+    /**
+     * 乘客类型
+     */
     private String type;
 
     public Integer getId() {
@@ -36,12 +56,20 @@ public class PasengerEntity {
         this.idCard = idCard == null ? null : idCard.trim();
     }
 
-    public String getPhone() {
+    public String getIdCardType() {
+        return idCardType;
+    }
+
+    public void setIdCardType(String idCardType) {
+        this.idCardType = idCardType == null ? null : idCardType.trim();
+    }
+
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
     public String getType() {

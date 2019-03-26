@@ -1,7 +1,7 @@
 package org.ironman.ticketsellingsystem.service.impl;
 
 import org.ironman.ticketsellingsystem.base.BaseResult;
-import org.ironman.ticketsellingsystem.dao.UserDao;
+import org.ironman.ticketsellingsystem.dao.UserMapper;
 import org.ironman.ticketsellingsystem.entity.UserEntity;
 import org.ironman.ticketsellingsystem.service.UserService;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements UserService {
     BaseResult baseResult;
     @Resource
-    UserDao userDao;
+    UserMapper userDao;
 
     @Override
     public BaseResult login(String account, String password) {
@@ -27,13 +27,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResult register(UserEntity userEntity) {
+    public BaseResult register(UserEntity userEntityEntity) {
         baseResult=new BaseResult();
-        if (userDao.checkRegister(userEntity.getAccount())){
+        if (userDao.checkRegister(userEntityEntity.getAccount())){
             baseResult.setSuccess(false);
             baseResult.setMessage("该账号已经注册");
         }else {
-            userDao.insertUser(userEntity);
+            userDao.insertUser(userEntityEntity);
             baseResult.setSuccess(true);
             baseResult.setMessage("注册成功");
         }
@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResult updateUser(UserEntity userEntity) {
+    public BaseResult updateUser(UserEntity userEntityEntity) {
         baseResult=new BaseResult();
-        if (userDao.updateUser(userEntity)==1){
+        if (userDao.updateUser(userEntityEntity)==1){
             baseResult.setSuccess(true);
             baseResult.setMessage("资料更改成功");
         }else {
@@ -56,10 +56,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public BaseResult selectUser(int id) {
         baseResult=new BaseResult();
-        UserEntity userEntity=userDao.selectUser(id);
-        if (userEntity!=null){
+        UserEntity userEntityEntity =userDao.selectUser(id);
+        if (userEntityEntity !=null){
             baseResult.setSuccess(true);
-            baseResult.setData(userEntity);
+            baseResult.setData(userEntityEntity);
         }else {
             baseResult.setSuccess(false);
             baseResult.setMessage("查询失败");

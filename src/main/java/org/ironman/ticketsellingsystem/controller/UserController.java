@@ -5,7 +5,6 @@ import org.ironman.ticketsellingsystem.base.BaseResult;
 import org.ironman.ticketsellingsystem.entity.UserEntity;
 import org.ironman.ticketsellingsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,15 +23,15 @@ public class UserController {
     }
     //注册
     @RequestMapping("/register")
-    public BaseResult register(UserEntity userEntity) {
+    public BaseResult register(UserEntity userEntityEntity) {
 
-        return userService.register(userEntity);
+        return userService.register(userEntityEntity);
     }
     //修改个人信息
     @RequestMapping("/updateUser")
-    public BaseResult updateUser(UserEntity userEntity) {
+    public BaseResult updateUser(UserEntity userEntityEntity) {
 
-        return userService.register(userEntity);
+        return userService.register(userEntityEntity);
     }
     //获得用户信息
     @RequestMapping("/selectUser")

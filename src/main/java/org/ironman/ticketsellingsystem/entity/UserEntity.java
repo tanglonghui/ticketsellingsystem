@@ -1,27 +1,55 @@
 package org.ironman.ticketsellingsystem.entity;
 
 
-public class UserEntity  {
+public class UserEntity {
+    /**
+     * 主键
+     */
     private Integer id;
 
+    /**
+     * 账号
+     */
     private String account;
 
+    /**
+     * 密码
+     */
     private String password;
 
+    /**
+     * 姓名
+     */
     private String name;
 
-    private Integer age;
+    /**
+     * 年龄
+     */
+    private String age;
 
-    private Integer idCard;
-
+    /**
+     * 性别
+     */
     private String sex;
 
-    private String phone;
+    /**
+     * 身份证（证件号）
+     */
+    private Integer idCard;
 
-    private String type;
+    /**
+     * 证件类型
+     */
+    private String idCardType;
 
-    private String emal;
+    /**
+     * 电话号码
+     */
+    private Integer phone;
 
+    /**
+     * 认证状态
+     */
     private String state;
 
     public Integer getId() {
@@ -56,20 +84,12 @@ public class UserEntity  {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(Integer idCard) {
-        this.idCard = idCard;
+    public void setAge(String age) {
+        this.age = age == null ? null : age.trim();
     }
 
     public String getSex() {
@@ -80,28 +100,28 @@ public class UserEntity  {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getPhone() {
+    public Integer getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(Integer idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getIdCardType() {
+        return idCardType;
+    }
+
+    public void setIdCardType(String idCardType) {
+        this.idCardType = idCardType == null ? null : idCardType.trim();
+    }
+
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
-    }
-
-    public String getEmal() {
-        return emal;
-    }
-
-    public void setEmal(String emal) {
-        this.emal = emal == null ? null : emal.trim();
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
     public String getState() {

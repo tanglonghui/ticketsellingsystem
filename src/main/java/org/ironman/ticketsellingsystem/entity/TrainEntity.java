@@ -3,30 +3,63 @@ package org.ironman.ticketsellingsystem.entity;
 import java.util.Date;
 
 
-public class TrainEntity  {
+public class TrainEntity {
     private Integer id;
 
-    private String trainModel;
+    /**
+     * 火车型号 如 k996
+     */
+    private String trainCard;
 
+    /**
+     * 起点
+     */
     private String startPlace;
 
+    /**
+     * 终点
+     */
     private String endPlace;
 
+    /**
+     * 开始时间
+     */
     private Date startTime;
 
+    /**
+     * 结束时间
+     */
     private Date endTime;
 
-    private Integer firstSeats;
+    /**
+     * 一等座位数
+     */
+    private String firstSeat;
 
-    private Integer secondSeats;
+    /**
+     * 一等座位价格
+     */
+    private Integer firstSeatPrice;
 
-    private Integer businessSeats;
+    /**
+     * 二等座位数
+     */
+    private String secondSeat;
 
-    private Float fristPrice;
+    /**
+     * 二等座位数价格
+     */
+    private Integer secondSeatPrice;
 
-    private Float secondPrice;
+    /**
+     * 商务座数量
+     */
+    private String businessSeat;
 
-    private Float businessPrice;
+    /**
+     * 商务座价格
+     */
+    private Integer businessPrice;
 
     public Integer getId() {
         return id;
@@ -36,12 +69,12 @@ public class TrainEntity  {
         this.id = id;
     }
 
-    public String getTrainModel() {
-        return trainModel;
+    public String getTrainCard() {
+        return trainCard;
     }
 
-    public void setTrainModel(String trainModel) {
-        this.trainModel = trainModel == null ? null : trainModel.trim();
+    public void setTrainCard(String trainCard) {
+        this.trainCard = trainCard == null ? null : trainCard.trim();
     }
 
     public String getStartPlace() {
@@ -76,51 +109,51 @@ public class TrainEntity  {
         this.endTime = endTime;
     }
 
-    public Integer getFirstSeats() {
-        return firstSeats;
+    public String getFirstSeat() {
+        return firstSeat;
     }
 
-    public void setFirstSeats(Integer firstSeats) {
-        this.firstSeats = firstSeats;
+    public void setFirstSeat(String firstSeat) {
+        this.firstSeat = firstSeat == null ? null : firstSeat.trim();
     }
 
-    public Integer getSecondSeats() {
-        return secondSeats;
+    public Integer getFirstSeatPrice() {
+        return firstSeatPrice;
     }
 
-    public void setSecondSeats(Integer secondSeats) {
-        this.secondSeats = secondSeats;
+    public void setFirstSeatPrice(Integer firstSeatPrice) {
+        this.firstSeatPrice = firstSeatPrice;
     }
 
-    public Integer getBusinessSeats() {
-        return businessSeats;
+    public String getSecondSeat() {
+        return secondSeat;
     }
 
-    public void setBusinessSeats(Integer businessSeats) {
-        this.businessSeats = businessSeats;
+    public void setSecondSeat(String secondSeat) {
+        this.secondSeat = secondSeat == null ? null : secondSeat.trim();
     }
 
-    public Float getFristPrice() {
-        return fristPrice;
+    public Integer getSecondSeatPrice() {
+        return secondSeatPrice;
     }
 
-    public void setFristPrice(Float fristPrice) {
-        this.fristPrice = fristPrice;
+    public void setSecondSeatPrice(Integer secondSeatPrice) {
+        this.secondSeatPrice = secondSeatPrice;
     }
 
-    public Float getSecondPrice() {
-        return secondPrice;
+    public String getBusinessSeat() {
+        return businessSeat;
     }
 
-    public void setSecondPrice(Float secondPrice) {
-        this.secondPrice = secondPrice;
+    public void setBusinessSeat(String businessSeat) {
+        this.businessSeat = businessSeat == null ? null : businessSeat.trim();
     }
 
-    public Float getBusinessPrice() {
+    public Integer getBusinessPrice() {
         return businessPrice;
     }
 
-    public void setBusinessPrice(Float businessPrice) {
+    public void setBusinessPrice(Integer businessPrice) {
         this.businessPrice = businessPrice;
     }
 }
