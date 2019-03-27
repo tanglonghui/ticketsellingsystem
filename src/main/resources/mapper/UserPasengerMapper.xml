@@ -6,10 +6,19 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="user_id" property="userId" jdbcType="INTEGER"/>
         <result column="pasenger_id" property="pasengerId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="CHAR"/>
+        <result column="id_card" property="idCard" jdbcType="CHAR"/>
+        <result column="id_card_type" property="idCardType" jdbcType="CHAR"/>
+        <result column="phone" property="phone" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="CHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id, user_id, pasenger_id
+    </sql>
+
+    <sql id="Base_Column_List_pasenger">
+        user_pasenger.id, user_pasenger.user_id, user_pasenger.pasenger_id,pasenger.name, pasenger.id_card, pasenger.id_card_type, pasenger.phone, pasenger.type
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -76,4 +85,11 @@
             pasenger_id = #{pasengerId,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="selectPasengerListByUserId" parameterType="org.ironman.ticketsellingsystem.entity.UserPasengerEntity" resultMap="BaseResultMap">
+        select
+        *
+        from user_pasenger,pasenger
+        where user_pasenger.pasenger_id = pasenger.id and user_pasenger.user_id= #{userId,jdbcType=INTEGER}
+    </select>
 </mapper>
