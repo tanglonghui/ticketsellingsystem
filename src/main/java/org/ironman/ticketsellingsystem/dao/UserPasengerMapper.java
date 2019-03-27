@@ -20,4 +20,6 @@ public interface UserPasengerMapper {
 
     //查询与改用户绑定的所有旅客
     List<UserPasengerEntity> selectPasengerListByUserId(UserPasengerEntity record);
+
+    int insertNoId(UserPasengerEntity record);
 }

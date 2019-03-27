@@ -15,4 +15,6 @@ public interface PasengerMapper {
     int updateByPrimaryKeySelective(PasengerEntity record);
 
     int updateByPrimaryKey(PasengerEntity record);
+
+    int insertNoId(PasengerEntity record);
 }

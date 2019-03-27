@@ -109,4 +109,11 @@
             type = #{type,jdbcType=CHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <insert id="insertNoId" useGeneratedKeys="true" keyProperty="id" parameterType="org.ironman.ticketsellingsystem.entity.PasengerEntity">
+        insert into pasenger (name, id_card, id_card_type,
+            phone, type)
+        values (#{name,jdbcType=CHAR}, #{idCard,jdbcType=CHAR}, #{idCardType,jdbcType=CHAR},
+            #{phone,jdbcType=INTEGER}, #{type,jdbcType=CHAR})
+    </insert>
 </mapper>

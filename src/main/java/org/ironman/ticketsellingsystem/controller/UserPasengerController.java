@@ -11,9 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserPasengerController {
     @Autowired
     UserPasengerService userPasengerService;
+    //查询旅客的我的列表
     @RequestMapping("/myPasengerList")
     public BaseResult getPasenger(UserPasengerEntity userPasengerEntity){
         return userPasengerService.getPasengerByUserId(userPasengerEntity);
+    }
+    //新增一个旅客
+    @RequestMapping("/addPasenger")
+    public BaseResult addPasenger(UserPasengerEntity userPasengerEntity){
+        return userPasengerService.addPasenger(userPasengerEntity);
     }
 
 }

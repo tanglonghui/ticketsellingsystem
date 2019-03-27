@@ -102,4 +102,16 @@ public class UserPasengerEntity {
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
     }
+
+    public PasengerEntity toPasengerEntity(){
+        PasengerEntity pasengerEntity=new PasengerEntity();
+        pasengerEntity.setId(pasengerId);
+        pasengerEntity.setIdCard(idCard);
+        pasengerEntity.setIdCardType(idCardType);
+        pasengerEntity.setName(name);
+        pasengerEntity.setType(type);
+        pasengerEntity.setPhone(phone);
+        return pasengerEntity;
+    }
+
 }
