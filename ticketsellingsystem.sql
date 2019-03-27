@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2019-03-26 17:27:07
+Date: 2019-03-27 17:06:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,11 +27,13 @@ CREATE TABLE `pasenger` (
   `phone` int(11) NOT NULL COMMENT '电话',
   `type` char(1) NOT NULL COMMENT '乘客类型',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pasenger
 -- ----------------------------
+INSERT INTO `pasenger` VALUES ('1', '1', '1', '1', '1', '1');
+INSERT INTO `pasenger` VALUES ('2', '3', '3', '3', '3', '3');
 
 -- ----------------------------
 -- Table structure for test
@@ -68,12 +70,13 @@ CREATE TABLE `train` (
   `business_price` int(11) NOT NULL COMMENT '商务座价格',
   `train_time` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of train
 -- ----------------------------
 INSERT INTO `train` VALUES ('1', 'k-747', '长沙', '北京', '2019-03-26 16:22:25', '2019-03-27 16:22:32', '100', '100', '100', '50', '100', '200', '2019-03-26');
+INSERT INTO `train` VALUES ('2', 'k-777', '长沙', '北京', '2019-03-26 08:36:25', '2019-03-26 20:36:33', '200', '100', '200', '50', '50', '200', '2019-03-26');
 
 -- ----------------------------
 -- Table structure for user
@@ -91,11 +94,12 @@ CREATE TABLE `user` (
   `phone` int(11) NOT NULL COMMENT '电话号码',
   `state` char(255) DEFAULT NULL COMMENT '认证状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for user_pasenger
@@ -106,11 +110,14 @@ CREATE TABLE `user_pasenger` (
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `pasenger_id` int(11) NOT NULL COMMENT '旅客id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pasenger
 -- ----------------------------
+INSERT INTO `user_pasenger` VALUES ('1', '1', '1');
+INSERT INTO `user_pasenger` VALUES ('2', '1', '2');
+INSERT INTO `user_pasenger` VALUES ('3', '1', '2');
 
 -- ----------------------------
 -- Table structure for user_train

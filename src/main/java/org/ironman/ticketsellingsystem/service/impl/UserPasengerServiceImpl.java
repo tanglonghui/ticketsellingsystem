@@ -47,4 +47,18 @@ public class UserPasengerServiceImpl implements UserPasengerService {
         }
         return baseResult;
     }
+
+    @Override
+    public BaseResult removePasenger(UserPasengerEntity entity) {
+        BaseResult baseResult=new BaseResult();
+        int i=userPasengerMapper.deleteByPrimaryKey(entity.getId());
+        if (i==1){
+            baseResult.setSuccess(true);
+            baseResult.setMessage("删除成功");
+        }else {
+            baseResult.setSuccess(false);
+            baseResult.setMessage("删除失败");
+        }
+        return baseResult;
+    }
 }

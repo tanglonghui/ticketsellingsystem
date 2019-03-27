@@ -28,7 +28,7 @@ public class UserTrainEntity {
     private String price;
 
     /**
-     * 是否支付
+     * 是否支付  0:未支付 1:已支付 2: 已使用 等状态
      */
     private String state;
 

@@ -15,4 +15,10 @@ public interface UserTrainMapper {
     int updateByPrimaryKeySelective(UserTrainEntity record);
 
     int updateByPrimaryKey(UserTrainEntity record);
+
+    //以状态和userId查询数据。
+    UserTrainEntity selectByState(UserTrainEntity record);
+
+    //修改状态
+    int updateState(UserTrainEntity record);
 }

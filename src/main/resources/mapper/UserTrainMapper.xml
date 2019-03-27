@@ -133,4 +133,12 @@
             state = #{state,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="selectByState" resultMap="BaseResultMap"
+            parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from user_train
+        where  state = #{state,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=INTEGER}
+    </select>
 </mapper>

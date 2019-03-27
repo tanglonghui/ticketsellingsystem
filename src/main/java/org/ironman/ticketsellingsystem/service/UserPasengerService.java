@@ -6,4 +6,5 @@ import org.ironman.ticketsellingsystem.entity.UserPasengerEntity;
 public interface UserPasengerService {
     BaseResult getPasengerByUserId(UserPasengerEntity entity);
     BaseResult addPasenger(UserPasengerEntity entity);
+    BaseResult removePasenger(UserPasengerEntity entity);
 }
