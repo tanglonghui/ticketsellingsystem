@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.ironman.ticketsellingsystem.dao.TrainMapper" >
+<mapper namespace="org.ironman.ticketsellingsystem.dao.TrainMapper">
 
-    <resultMap id="BaseResultMap" type="org.ironman.ticketsellingsystem.entity.TrainEntity" >
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="train_card" property="trainCard" jdbcType="CHAR" />
-        <result column="start_place" property="startPlace" jdbcType="VARCHAR" />
-        <result column="end_place" property="endPlace" jdbcType="VARCHAR" />
-        <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
-        <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-        <result column="first_seat" property="firstSeat" jdbcType="VARCHAR" />
-        <result column="first_seat_price" property="firstSeatPrice" jdbcType="INTEGER" />
-        <result column="second_seat" property="secondSeat" jdbcType="VARCHAR" />
-        <result column="second_seat_price" property="secondSeatPrice" jdbcType="INTEGER" />
-        <result column="business_seat" property="businessSeat" jdbcType="VARCHAR" />
-        <result column="business_price" property="businessPrice" jdbcType="INTEGER" />
-        <result column="train_time" property="trainTime" jdbcType="DATE" />
+    <resultMap id="BaseResultMap" type="org.ironman.ticketsellingsystem.entity.TrainEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="train_card" property="trainCard" jdbcType="CHAR"/>
+        <result column="start_place" property="startPlace" jdbcType="VARCHAR"/>
+        <result column="end_place" property="endPlace" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="first_seat" property="firstSeat" jdbcType="VARCHAR"/>
+        <result column="first_seat_price" property="firstSeatPrice" jdbcType="INTEGER"/>
+        <result column="second_seat" property="secondSeat" jdbcType="VARCHAR"/>
+        <result column="second_seat_price" property="secondSeatPrice" jdbcType="INTEGER"/>
+        <result column="business_seat" property="businessSeat" jdbcType="VARCHAR"/>
+        <result column="business_price" property="businessPrice" jdbcType="INTEGER"/>
+        <result column="train_time" property="trainTime" jdbcType="DATE"/>
     </resultMap>
 
-    <sql id="Base_Column_List" >
+    <sql id="Base_Column_List">
         id, train_card, start_place, end_place, start_time, end_time, first_seat, first_seat_price,
         second_seat, second_seat_price, business_seat, business_price, train_time
     </sql>
 
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         from train
         where id = #{id,jdbcType=INTEGER}
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from train
         where id = #{id,jdbcType=INTEGER}
     </delete>
 
-    <insert id="insert" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity" >
+    <insert id="insert" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         insert into train (id, train_card, start_place,
             end_place, start_time, end_time,
             first_seat, first_seat_price, second_seat,
@@ -48,136 +48,136 @@
             #{trainTime,jdbcType=DATE})
     </insert>
 
-    <insert id="insertSelective" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity" >
+    <insert id="insertSelective" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         insert into train
-        <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
                 id,
             </if>
-            <if test="trainCard != null" >
+            <if test="trainCard != null">
                 train_card,
             </if>
-            <if test="startPlace != null" >
+            <if test="startPlace != null">
                 start_place,
             </if>
-            <if test="endPlace != null" >
+            <if test="endPlace != null">
                 end_place,
             </if>
-            <if test="startTime != null" >
+            <if test="startTime != null">
                 start_time,
             </if>
-            <if test="endTime != null" >
+            <if test="endTime != null">
                 end_time,
             </if>
-            <if test="firstSeat != null" >
+            <if test="firstSeat != null">
                 first_seat,
             </if>
-            <if test="firstSeatPrice != null" >
+            <if test="firstSeatPrice != null">
                 first_seat_price,
             </if>
-            <if test="secondSeat != null" >
+            <if test="secondSeat != null">
                 second_seat,
             </if>
-            <if test="secondSeatPrice != null" >
+            <if test="secondSeatPrice != null">
                 second_seat_price,
             </if>
-            <if test="businessSeat != null" >
+            <if test="businessSeat != null">
                 business_seat,
             </if>
-            <if test="businessPrice != null" >
+            <if test="businessPrice != null">
                 business_price,
             </if>
-            <if test="trainTime != null" >
+            <if test="trainTime != null">
                 train_time,
             </if>
         </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="trainCard != null" >
+            <if test="trainCard != null">
                 #{trainCard,jdbcType=CHAR},
             </if>
-            <if test="startPlace != null" >
+            <if test="startPlace != null">
                 #{startPlace,jdbcType=VARCHAR},
             </if>
-            <if test="endPlace != null" >
+            <if test="endPlace != null">
                 #{endPlace,jdbcType=VARCHAR},
             </if>
-            <if test="startTime != null" >
+            <if test="startTime != null">
                 #{startTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="endTime != null" >
+            <if test="endTime != null">
                 #{endTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="firstSeat != null" >
+            <if test="firstSeat != null">
                 #{firstSeat,jdbcType=VARCHAR},
             </if>
-            <if test="firstSeatPrice != null" >
+            <if test="firstSeatPrice != null">
                 #{firstSeatPrice,jdbcType=INTEGER},
             </if>
-            <if test="secondSeat != null" >
+            <if test="secondSeat != null">
                 #{secondSeat,jdbcType=VARCHAR},
             </if>
-            <if test="secondSeatPrice != null" >
+            <if test="secondSeatPrice != null">
                 #{secondSeatPrice,jdbcType=INTEGER},
             </if>
-            <if test="businessSeat != null" >
+            <if test="businessSeat != null">
                 #{businessSeat,jdbcType=VARCHAR},
             </if>
-            <if test="businessPrice != null" >
+            <if test="businessPrice != null">
                 #{businessPrice,jdbcType=INTEGER},
             </if>
-            <if test="trainTime != null" >
+            <if test="trainTime != null">
                 #{trainTime,jdbcType=DATE},
             </if>
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity" >
+    <update id="updateByPrimaryKeySelective" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         update train
-        <set >
-            <if test="trainCard != null" >
+        <set>
+            <if test="trainCard != null">
                 train_card = #{trainCard,jdbcType=CHAR},
             </if>
-            <if test="startPlace != null" >
+            <if test="startPlace != null">
                 start_place = #{startPlace,jdbcType=VARCHAR},
             </if>
-            <if test="endPlace != null" >
+            <if test="endPlace != null">
                 end_place = #{endPlace,jdbcType=VARCHAR},
             </if>
-            <if test="startTime != null" >
+            <if test="startTime != null">
                 start_time = #{startTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="endTime != null" >
+            <if test="endTime != null">
                 end_time = #{endTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="firstSeat != null" >
+            <if test="firstSeat != null">
                 first_seat = #{firstSeat,jdbcType=VARCHAR},
             </if>
-            <if test="firstSeatPrice != null" >
+            <if test="firstSeatPrice != null">
                 first_seat_price = #{firstSeatPrice,jdbcType=INTEGER},
             </if>
-            <if test="secondSeat != null" >
+            <if test="secondSeat != null">
                 second_seat = #{secondSeat,jdbcType=VARCHAR},
             </if>
-            <if test="secondSeatPrice != null" >
+            <if test="secondSeatPrice != null">
                 second_seat_price = #{secondSeatPrice,jdbcType=INTEGER},
             </if>
-            <if test="businessSeat != null" >
+            <if test="businessSeat != null">
                 business_seat = #{businessSeat,jdbcType=VARCHAR},
             </if>
-            <if test="businessPrice != null" >
+            <if test="businessPrice != null">
                 business_price = #{businessPrice,jdbcType=INTEGER},
             </if>
-            <if test="trainTime != null" >
+            <if test="trainTime != null">
                 train_time = #{trainTime,jdbcType=DATE},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKey" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity" >
+    <update id="updateByPrimaryKey" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         update train
         set train_card = #{trainCard,jdbcType=CHAR},
             start_place = #{startPlace,jdbcType=VARCHAR},
@@ -194,16 +194,18 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <select id="selectByDate" resultMap="BaseResultMap" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
+    <select id="selectByDate" resultMap="BaseResultMap"
+            parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         select
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         from train
         where train_time =#{trainTime,jdbcType=DATE}
     </select>
 
-    <select id="selectByCard" resultMap="BaseResultMap" parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
+    <select id="selectByCard" resultMap="BaseResultMap"
+            parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         select
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         from train
         where train_card = #{trainCard ,jdbcType=CHAR}
     </select>
