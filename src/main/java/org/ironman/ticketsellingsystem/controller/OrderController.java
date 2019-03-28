@@ -11,8 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     @Autowired
     OrderService orderService;
-    @RequestMapping()
+    /**
+     * @param : userId state
+     * @Description TODO : 根据状态获得订单结果
+     */
+    @RequestMapping("/orderList")
     public BaseResult getOrderListbyState(UserTrainEntity entity){
         return orderService.getOrderList(entity);
+    }
+    /**
+     * @param : userId state
+     * @Description TODO : 根据状态改变订单状态
+     */
+    @RequestMapping("/changOrderState")
+    public BaseResult changOrderState(UserTrainEntity entity){
+        return orderService.updateState(entity);
     }
 }

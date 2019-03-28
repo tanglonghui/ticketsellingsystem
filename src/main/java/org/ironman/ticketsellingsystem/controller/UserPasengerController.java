@@ -14,16 +14,16 @@ public class UserPasengerController {
     @Autowired
     UserPasengerService userPasengerService;
     /**
-     * @parms : userId
-     * @describe TODO :  查询旅客的我的列表
+     * @param : userId
+     * @Description TODO : TODO :  查询旅客的我的列表
      */
     @RequestMapping("/myPasengerList")
     public BaseResult getPasenger(UserPasengerEntity userPasengerEntity){
         return userPasengerService.getPasengerByUserId(userPasengerEntity);
     }
     /**
-     * @parms : userId  PasengerEntity
-     * @describe TODO :   新增绑定一个旅客
+     * @param : userId  PasengerEntity
+     * @Description TODO :   新增绑定一个旅客
      */
     @RequestMapping("/addPasenger")
     public BaseResult addPasenger(UserPasengerEntity userPasengerEntity){
