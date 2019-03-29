@@ -21,4 +21,7 @@ public interface UserTrainMapper {
 
     //修改状态
     int updateState(UserTrainEntity record);
+
+    //插入
+    int insertNoId(UserTrainEntity record);
 }

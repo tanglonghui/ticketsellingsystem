@@ -11,12 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrainController {
     @Autowired
     private TrainService trainService;
-    //获得列车时刻表
+    /**
+     * @param :
+     * @Description TODO : 通过时间获得当天的列车时刻表
+     */
     @RequestMapping("/trainList")
     public BaseResult getTrainListbyTime(TrainEntity trainEntity){
         return trainService.trainList(trainEntity.getTrainTime());
     }
-    //获得列车时刻表
+    /**
+     * @param :
+     * @Description TODO : 通过列车型号获得当天的列车时刻表
+     */
     @RequestMapping("/trainListCard")
     public BaseResult getTrainListbyId(TrainEntity trainEntity){
         return trainService.trainListByCard(trainEntity.getTrainCard());

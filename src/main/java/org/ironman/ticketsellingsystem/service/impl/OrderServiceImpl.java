@@ -33,6 +33,20 @@ public class OrderServiceImpl implements OrderService {
             baseResult.setSuccess(false);
             baseResult.setMessage("更新失败");
         }
-        return null;
+        return baseResult;
+    }
+
+    @Override
+    public BaseResult insertOrder(UserTrainEntity entity) {
+        BaseResult baseResult = new BaseResult();
+        int i = userTrainMapper.insertNoId(entity);
+        if (i == 1) {
+            baseResult.setSuccess(true);
+            baseResult.setMessage("购买成功");
+        } else {
+            baseResult.setSuccess(false);
+            baseResult.setMessage("购买失败");
+        }
+        return baseResult;
     }
 }

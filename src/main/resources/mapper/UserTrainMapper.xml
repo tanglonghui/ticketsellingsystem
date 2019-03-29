@@ -141,4 +141,13 @@
         from user_train
         where  state = #{state,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=INTEGER}
     </select>
+
+    <insert id="insertNoId" parameterType="org.ironman.ticketsellingsystem.entity.UserTrainEntity">
+        insert into user_train (user_id, train_id,
+            pasenger_id, order_time, seat,
+            price, state)
+        values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER},
+            #{pasengerId,jdbcType=INTEGER}, #{orderTime,jdbcType=TIMESTAMP}, #{seat,jdbcType=VARCHAR},
+            #{price,jdbcType=CHAR}, #{state,jdbcType=VARCHAR})
+    </insert>
 </mapper>

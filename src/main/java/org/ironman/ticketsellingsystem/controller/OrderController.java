@@ -21,10 +21,19 @@ public class OrderController {
     }
     /**
      * @param : userId state
-     * @Description TODO : 根据状态改变订单状态
+     * @Description TODO : 改变订单状态
      */
     @RequestMapping("/changOrderState")
     public BaseResult changOrderState(UserTrainEntity entity){
         return orderService.updateState(entity);
     }
+    /**
+     * @param : userId state
+     * @Description TODO : 购买车票
+     */
+    @RequestMapping("/addOrder")
+    public BaseResult addOrder(UserTrainEntity entity){
+        return orderService.insertOrder(entity);
+    }
+
 }
