@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
         baseResult=new BaseResult();
         if (userDao.checkLogin(account, password)){
             baseResult.setSuccess(true);
-            baseResult.setList(userDao.selectUser(account));
+            baseResult.setData(userDao.selectUser(account));
         }else {
             baseResult.setSuccess(false);
             baseResult.setMessage("账号或密码错误");
@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
             baseResult.setSuccess(false);
             baseResult.setMessage("该账号已经注册");
         }else {
+            userEntityEntity.setState("0");
             userDao.insertUser(userEntityEntity);
             baseResult.setSuccess(true);
             baseResult.setMessage("注册成功");

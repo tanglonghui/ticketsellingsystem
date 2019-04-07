@@ -35,7 +35,7 @@ public class UserEntity {
     /**
      * 身份证（证件号）
      */
-    private Integer idCard;
+    private String idCard;
 
     /**
      * 证件类型
@@ -45,7 +45,7 @@ public class UserEntity {
     /**
      * 电话号码
      */
-    private Integer phone;
+    private String phone;
 
     /**
      * 认证状态
@@ -100,11 +100,11 @@ public class UserEntity {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public Integer getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(Integer idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
@@ -116,11 +116,11 @@ public class UserEntity {
         this.idCardType = idCardType == null ? null : idCardType.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -9,9 +9,9 @@
         <result column="name" property="name" jdbcType="CHAR"/>
         <result column="age" property="age" jdbcType="CHAR"/>
         <result column="sex" property="sex" jdbcType="CHAR"/>
-        <result column="id_card" property="idCard" jdbcType="INTEGER"/>
+        <result column="id_card" property="idCard" jdbcType="CHAR"/>
         <result column="id_card_type" property="idCardType" jdbcType="CHAR"/>
-        <result column="phone" property="phone" jdbcType="INTEGER"/>
+        <result column="phone" property="phone" jdbcType="CHAR"/>
         <result column="state" property="state" jdbcType="CHAR"/>
     </resultMap>
 
@@ -37,7 +37,7 @@
             id_card_type, phone, state
             )
         values (#{id,jdbcType=INTEGER}, #{account,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
-            #{name,jdbcType=CHAR}, #{age,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{idCard,jdbcType=INTEGER}, 
+            #{name,jdbcType=CHAR}, #{age,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{idCard,jdbcType=CHAR},
             #{idCardType,jdbcType=CHAR}, #{phone,jdbcType=INTEGER}, #{state,jdbcType=CHAR}
             )
     </insert>
@@ -96,7 +96,7 @@
                 #{sex,jdbcType=CHAR},
             </if>
             <if test="idCard != null">
-                #{idCard,jdbcType=INTEGER},
+                #{idCard,jdbcType=CHAR},
             </if>
             <if test="idCardType != null">
                 #{idCardType,jdbcType=CHAR},
@@ -129,7 +129,7 @@
                 sex = #{sex,jdbcType=CHAR},
             </if>
             <if test="idCard != null">
-                id_card = #{idCard,jdbcType=INTEGER},
+                id_card = #{idCard,jdbcType=CHAR},
             </if>
             <if test="idCardType != null">
                 id_card_type = #{idCardType,jdbcType=CHAR},
@@ -151,7 +151,7 @@
             name = #{name,jdbcType=CHAR},
             age = #{age,jdbcType=CHAR},
             sex = #{sex,jdbcType=CHAR},
-            id_card = #{idCard,jdbcType=INTEGER},
+            id_card = #{idCard,jdbcType=CHAR},
             id_card_type = #{idCardType,jdbcType=CHAR},
             phone = #{phone,jdbcType=INTEGER},
             state = #{state,jdbcType=CHAR}
@@ -170,14 +170,14 @@
   </select>
     <!--插入操作-->
     <insert id="insertUser" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
-   insert into user (id, account, password,
-            name, age, id_card,
-            sex, phone, type,
-            emal, state)
-        values (#{id,jdbcType=INTEGER}, #{account,jdbcType=CHAR}, #{password,jdbcType=CHAR},
-            #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{idCard,jdbcType=INTEGER},
-            #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
-            #{emal,jdbcType=CHAR}, #{state,jdbcType=VARCHAR})
+  insert into user (account, password,
+            name, age, sex, id_card,
+            id_card_type, phone, state
+            )
+        values (#{account,jdbcType=CHAR}, #{password,jdbcType=CHAR},
+            #{name,jdbcType=CHAR}, #{age,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{idCard,jdbcType=CHAR},
+            #{idCardType,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{state,jdbcType=CHAR}
+            )
   </insert>
     <update id="updateUser" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
         update user
@@ -185,7 +185,7 @@
             password = #{password,jdbcType=CHAR},
             name = #{name,jdbcType=VARCHAR},
             age = #{age,jdbcType=INTEGER},
-            id_card = #{idCard,jdbcType=INTEGER},
+            id_card = #{idCard,jdbcType=CHAR},
             sex = #{sex,jdbcType=VARCHAR},
             phone = #{phone,jdbcType=VARCHAR},
             type = #{type,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
             password = #{password,jdbcType=CHAR},
             name = #{name,jdbcType=VARCHAR},
             age = #{age,jdbcType=INTEGER},
-            id_card = #{idCard,jdbcType=INTEGER},
+            id_card = #{idCard,jdbcType=CHAR},
             sex = #{sex,jdbcType=VARCHAR},
             phone = #{phone,jdbcType=VARCHAR},
             type = #{type,jdbcType=VARCHAR},
