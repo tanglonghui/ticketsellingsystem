@@ -50,8 +50,8 @@ public class OrderServiceImpl implements OrderService {
         return baseResult;
     }
 
-    @Override
-    public BaseResult insertOrder(UserTrainEntity entity) {
-        return null;
-    }
+//    @Override
+//    public BaseResult insertOrder(UserTrainEntity entity) {
+//        return null;
+//    }
 }

@@ -214,7 +214,7 @@
 
     <update id="updateUserPassword" parameterType="org.ironman.ticketsellingsystem.entity.UserEntity">
         update user
-        set password = #{password,jdbcType=CHAR},
+        set password = #{password,jdbcType=CHAR}
          where  account = #{account,jdbcType=CHAR}
     </update>
 </mapper>

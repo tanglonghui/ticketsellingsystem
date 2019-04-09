@@ -14,4 +14,6 @@ public interface UserService {
     BaseResult selectUser(int id);
     //修改密码
     BaseResult updatePassword(String account,String old,String password);
+    //忘记密码
+    BaseResult forgetPassword(UserEntity userEntityEntity);
 }

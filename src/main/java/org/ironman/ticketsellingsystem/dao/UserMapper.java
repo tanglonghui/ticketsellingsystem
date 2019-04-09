@@ -37,7 +37,7 @@ public interface UserMapper {
     UserEntity selectUser(String account);
 
     //修改账号密码 返回值是更新的条目数量
-    int updateUserPassword(@Param("account") String account, @Param("old") String old, @Param("password") String password);
+    int updateUserPassword(UserEntity userEntityEntity);
 
     //修改用户信息 返回值是更新的条目数量
     int updateUserInfo(UserEntity userEntityEntity);

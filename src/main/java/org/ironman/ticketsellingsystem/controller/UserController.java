@@ -40,8 +40,13 @@ public class UserController {
     }
 
     //修改密码
-    @RequestMapping("updatePassword")
+    @RequestMapping("/updatePassword")
     public BaseResult updadtePassword(HttpServletRequest request) {
         return userService.updatePassword(request.getParameter("account"),request.getParameter("password"),request.getParameter("password"));
+    }
+    //忘记密码
+    @RequestMapping("/forgetPassword")
+    public BaseResult forgetPassword(UserEntity userEntityEntity) {
+        return userService.forgetPassword(userEntityEntity);
     }
 }
