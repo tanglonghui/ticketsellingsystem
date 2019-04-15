@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3307
-Source Server Version : 50525
-Source Host           : localhost:3307
+Source Server         : Archer
+Source Server Version : 80011
+Source Host           : localhost:3306
 Source Database       : ticketsellingsystem
 
 Target Server Type    : MYSQL
-Target Server Version : 50525
+Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2019-03-27 17:06:25
+Date: 2019-04-16 00:28:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for pasenger
+-- Table structure for `pasenger`
 -- ----------------------------
 DROP TABLE IF EXISTS `pasenger`;
 CREATE TABLE `pasenger` (
@@ -36,7 +36,7 @@ INSERT INTO `pasenger` VALUES ('1', '1', '1', '1', '1', '1');
 INSERT INTO `pasenger` VALUES ('2', '3', '3', '3', '3', '3');
 
 -- ----------------------------
--- Table structure for test
+-- Table structure for `test`
 -- ----------------------------
 DROP TABLE IF EXISTS `test`;
 CREATE TABLE `test` (
@@ -52,7 +52,7 @@ INSERT INTO `test` VALUES ('1', '你好世界');
 INSERT INTO `test` VALUES ('2', '123');
 
 -- ----------------------------
--- Table structure for train
+-- Table structure for `train`
 -- ----------------------------
 DROP TABLE IF EXISTS `train`;
 CREATE TABLE `train` (
@@ -79,30 +79,33 @@ INSERT INTO `train` VALUES ('1', 'k-747', '长沙', '北京', '2019-03-26 16:22:
 INSERT INTO `train` VALUES ('2', 'k-777', '长沙', '北京', '2019-03-26 08:36:25', '2019-03-26 20:36:33', '200', '100', '200', '50', '50', '200', '2019-03-26');
 
 -- ----------------------------
--- Table structure for user
+-- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `account` char(255) NOT NULL COMMENT '账号',
   `password` char(255) NOT NULL COMMENT '密码',
-  `name` char(1) NOT NULL COMMENT '姓名',
-  `age` char(1) DEFAULT NULL COMMENT '年龄',
+  `name` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '濮撳悕',
+  `age` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '骞撮緞',
   `sex` char(255) NOT NULL COMMENT '性别',
-  `id_card` int(11) DEFAULT NULL COMMENT '身份证（证件号）',
-  `id_card_type` char(1) NOT NULL COMMENT '证件类型',
-  `phone` int(11) NOT NULL COMMENT '电话号码',
+  `id_card` char(255) DEFAULT NULL COMMENT '闊偂鍞ょ拠渚婄礄鐠囦椒娆㈤崣鍑ょ礆',
+  `id_card_type` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '鐠囦椒娆㈢猾璇茬€?',
+  `phone` char(255) NOT NULL COMMENT '閻絻鐦介崣椋庣垳',
   `state` char(255) DEFAULT NULL COMMENT '认证状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `user` VALUES ('1', '1', '1', '张三', '18', '男', '43102119', '身份证', '1837777777', '1');
+INSERT INTO `user` VALUES ('2', '12', '123456', '赵', null, '男', null, null, '12345678910', '0');
+INSERT INTO `user` VALUES ('3', '123', '1234567', '赵', null, '女', null, null, '12345678910', '0');
+INSERT INTO `user` VALUES ('4', '1234', '123456', '赵', null, '男', null, null, '12345678910', '0');
 
 -- ----------------------------
--- Table structure for user_pasenger
+-- Table structure for `user_pasenger`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_pasenger`;
 CREATE TABLE `user_pasenger` (
@@ -120,7 +123,7 @@ INSERT INTO `user_pasenger` VALUES ('2', '1', '2');
 INSERT INTO `user_pasenger` VALUES ('3', '1', '2');
 
 -- ----------------------------
--- Table structure for user_train
+-- Table structure for `user_train`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_train`;
 CREATE TABLE `user_train` (
