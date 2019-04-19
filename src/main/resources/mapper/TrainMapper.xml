@@ -199,7 +199,7 @@
         select
         <include refid="Base_Column_List"/>
         from train
-        where train_time =#{trainTime,jdbcType=DATE}
+        where train_time =#{trainTime,jdbcType=DATE} and start_place =#{startPlace,jdbcType=VARCHAR} and  end_place = #{endPlace,jdbcType=VARCHAR};
     </select>
 
     <select id="selectByCard" resultMap="BaseResultMap"

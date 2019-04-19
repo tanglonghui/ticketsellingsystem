@@ -13,7 +13,7 @@ public class TrainController {
     private TrainService trainService;
     /**
      * @param :
-     * @Description TODO : 通过时间获得当天的列车时刻表
+     * @Description TODO : 通过时间获得当天的列车时刻表(起点，终点)
      */
     @RequestMapping("/trainList")
     public BaseResult getTrainListbyTime(TrainEntity trainEntity){
