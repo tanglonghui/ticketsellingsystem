@@ -2,7 +2,7 @@ package org.ironman.ticketsellingsystem.base;
 
 public class Test {
     public static void main(String[] args)  {
-       Test2();
+       Test3();
     }
 
     public static  void Test1() {
@@ -21,6 +21,12 @@ public class Test {
         new Thread(t1,"C").start();
         new Thread(t1,"D").start();
     }
+    public static void Test3() {
+        Double x=1.555555555555555;
+        Double y=1.55555555555555555;
+        System.out.println(x*y);
+    }
+
 
 
 }
