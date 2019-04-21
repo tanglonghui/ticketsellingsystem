@@ -17,7 +17,7 @@ public class TrainController {
      */
     @RequestMapping("/trainList")
     public BaseResult getTrainListbyTime(TrainEntity trainEntity){
-        return trainService.trainList(trainEntity.getTrainTime());
+        return trainService.trainList(trainEntity);
     }
     /**
      * @param :

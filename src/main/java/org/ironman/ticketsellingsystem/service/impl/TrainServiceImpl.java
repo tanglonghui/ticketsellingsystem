@@ -17,11 +17,9 @@ public class TrainServiceImpl implements TrainService {
     @Resource
     TrainMapper trainMapper;
     @Override
-    public BaseResult trainList(Date date) {
+    public BaseResult trainList(TrainEntity trainEntity) {
         baseResult =new BaseResult();
         baseResult.setSuccess(true);
-        TrainEntity trainEntity=new TrainEntity();
-        trainEntity.setTrainTime(date);
         baseResult.setList(trainMapper.selectByDate(trainEntity));
         return baseResult;
     }
