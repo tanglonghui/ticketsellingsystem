@@ -35,6 +35,6 @@ public class UserPasengerController {
      */
     @RequestMapping("/removePasenger")
     public BaseResult removePasenger(UserPasengerEntity userPasengerEntity){
-        return userPasengerService.addPasenger(userPasengerEntity);
+        return userPasengerService.removePasenger(userPasengerEntity);
     }
 }
