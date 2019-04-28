@@ -7,7 +7,7 @@
         <result column="name" property="name" jdbcType="CHAR"/>
         <result column="id_card" property="idCard" jdbcType="CHAR"/>
         <result column="id_card_type" property="idCardType" jdbcType="CHAR"/>
-        <result column="phone" property="phone" jdbcType="INTEGER"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
         <result column="type" property="type" jdbcType="CHAR"/>
     </resultMap>
 
@@ -114,6 +114,6 @@
         insert into pasenger (name, id_card, id_card_type,
             phone, type)
         values (#{name,jdbcType=CHAR}, #{idCard,jdbcType=CHAR}, #{idCardType,jdbcType=CHAR},
-            #{phone,jdbcType=INTEGER}, #{type,jdbcType=CHAR})
+            #{phone,jdbcType=CHAR}, #{type,jdbcType=CHAR})
     </insert>
 </mapper>

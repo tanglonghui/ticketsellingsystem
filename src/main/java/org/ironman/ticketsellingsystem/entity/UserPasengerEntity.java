@@ -32,7 +32,7 @@ public class UserPasengerEntity {
     /**
      * 电话
      */
-    private Integer phone;
+    private String phone;
 
     /**
      * 乘客类型
@@ -87,11 +87,11 @@ public class UserPasengerEntity {
         this.idCardType = idCardType == null ? null : idCardType.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -9,7 +9,7 @@
         <result column="name" property="name" jdbcType="CHAR"/>
         <result column="id_card" property="idCard" jdbcType="CHAR"/>
         <result column="id_card_type" property="idCardType" jdbcType="CHAR"/>
-        <result column="phone" property="phone" jdbcType="INTEGER"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
         <result column="type" property="type" jdbcType="CHAR"/>
     </resultMap>
 
