@@ -28,14 +28,14 @@ public class TrainEntity {
      * 开始时间
      */
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @JsonFormat(pattern = "HH:ss")
+    @JsonFormat(pattern = "HH:mm")
     private Date startTime;
 
     /**
      * 结束时间
      */
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @JsonFormat(pattern = "HH:ss")
+    @JsonFormat(pattern = "HH:mm")
     private Date endTime;
 
     /**
