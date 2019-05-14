@@ -1,5 +1,8 @@
 package org.ironman.ticketsellingsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 
@@ -15,6 +18,8 @@ public class UserTrainEntity {
     /**
      * 订单时间
      */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:ss")
     private Date orderTime;
 
     /**
