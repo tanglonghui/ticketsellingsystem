@@ -18,8 +18,8 @@ public class UserTrainEntity {
     /**
      * 订单时间
      */
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderTime;
 
     /**
