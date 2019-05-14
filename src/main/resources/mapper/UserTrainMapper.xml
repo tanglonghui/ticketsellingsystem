@@ -146,7 +146,7 @@
         insert into user_train (user_id, train_id,
             pasenger_id, order_time, seat,
             price, state)
-        values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER},
+        values ( #{userId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER},
             #{pasengerId,jdbcType=INTEGER}, #{orderTime,jdbcType=TIMESTAMP}, #{seat,jdbcType=VARCHAR},
             #{price,jdbcType=CHAR}, #{state,jdbcType=VARCHAR})
     </insert>
