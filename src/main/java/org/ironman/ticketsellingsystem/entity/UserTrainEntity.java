@@ -33,9 +33,42 @@ public class UserTrainEntity {
     private String price;
 
     /**
-     * 是否支付  0:未支付 1:已支付 2: 已使用 等状态
+     * 是否支付  0:未支付 1:已支付 2: 无效 ,3 :已经使用 等状态
      */
     private String state;
+
+    /**
+     * 火车型号 如 k996
+     */
+    private String trainCard;
+
+    /**
+     * 起点
+     */
+    private String startPlace;
+
+    /**
+     * 终点
+     */
+    private String endPlace;
+
+    /**
+     * 开始时间
+     */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @JsonFormat(pattern = "HH:mm")
+    private Date startTime;
+
+    /**
+     * 结束时间
+     */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @JsonFormat(pattern = "HH:mm")
+    private Date endTime;
+    /**
+     * 姓名
+     */
+    private String name;
 
     public Integer getId() {
         return id;
@@ -99,5 +132,54 @@ public class UserTrainEntity {
 
     public void setState(String state) {
         this.state = state == null ? null : state.trim();
+    }
+
+
+    public String getTrainCard() {
+        return trainCard;
+    }
+
+    public void setTrainCard(String trainCard) {
+        this.trainCard = trainCard == null ? null : trainCard.trim();
+    }
+
+    public String getStartPlace() {
+        return startPlace;
+    }
+
+    public void setStartPlace(String startPlace) {
+        this.startPlace = startPlace == null ? null : startPlace.trim();
+    }
+
+    public String getEndPlace() {
+        return endPlace;
+    }
+
+    public void setEndPlace(String endPlace) {
+        this.endPlace = endPlace == null ? null : endPlace.trim();
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 }

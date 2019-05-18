@@ -3,6 +3,8 @@ package org.ironman.ticketsellingsystem.dao;
 
 import org.ironman.ticketsellingsystem.entity.UserTrainEntity;
 
+import java.util.List;
+
 public interface UserTrainMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -17,7 +19,7 @@ public interface UserTrainMapper {
     int updateByPrimaryKey(UserTrainEntity record);
 
     //以状态和userId查询数据。
-    UserTrainEntity selectByState(UserTrainEntity record);
+    List<UserTrainEntity> selectByState(UserTrainEntity record);
 
     //修改状态
     int updateState(UserTrainEntity record);

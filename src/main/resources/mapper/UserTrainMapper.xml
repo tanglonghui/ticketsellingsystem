@@ -11,6 +11,12 @@
         <result column="seat" property="seat" jdbcType="VARCHAR"/>
         <result column="price" property="price" jdbcType="CHAR"/>
         <result column="state" property="state" jdbcType="VARCHAR"/>
+        <result column="train_card" property="trainCard" jdbcType="CHAR"/>
+        <result column="start_place" property="startPlace" jdbcType="VARCHAR"/>
+        <result column="end_place" property="endPlace" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="name" property="name" jdbcType="CHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -137,9 +143,12 @@
     <select id="selectByState" resultMap="BaseResultMap"
             parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
         select
-        <include refid="Base_Column_List"/>
-        from user_train
-        where  state = #{state,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=INTEGER}
+       *
+        from user_train,pasenger,train
+        where  state = #{state,jdbcType=VARCHAR}
+        and user_id = #{userId,jdbcType=INTEGER}
+        and user_train.pasenger_id=pasenger.id
+        and user_train.train_id=train.id
     </select>
 
     <insert id="insertNoId" parameterType="org.ironman.ticketsellingsystem.entity.UserTrainEntity">
