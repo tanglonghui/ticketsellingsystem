@@ -26,12 +26,32 @@ public class ScheduledTask {
     public void reportCurrentTime() throws InterruptedException {
         List<UserTrainEntity> mlist = userTrainMapper.selectAllByState("0");
         now = new Date();
+        //未支付的临时订单
         for (UserTrainEntity bean : mlist) {
             if (now.getTime() - bean.getOrderTime().getTime() > 15 * 60000) {
                 bean.setState("2");
                 int i = userTrainMapper.updateByPrimaryKey(bean);
                 if (i == 1) {
                     System.out.println("订单" + bean.getId() + "自动失效");
+                } else if (now.getTime() > bean.getStartTime().getTime()) {
+                    bean.setState("2");
+                    int i2 = userTrainMapper.updateByPrimaryKey(bean);
+                    if (i2 == 1) {
+                        System.out.println("订单" + bean.getId() + "自动失效");
+                    }
+
+                }
+
+            }
+        }
+        //已支付，过了发车时间的订单
+        List<UserTrainEntity> mlist2 = userTrainMapper.selectAllByState("1");
+        for (UserTrainEntity bean : mlist2) {
+            if (now.getTime() > bean.getStartTime().getTime()) {
+                bean.setState("2");
+                int i = userTrainMapper.updateByPrimaryKey(bean);
+                if (i == 1) {
+                    System.out.println("订单" + bean.getId() + "过期");
                 }
 
             }
