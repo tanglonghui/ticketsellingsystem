@@ -19,6 +19,7 @@
         <result column="name" property="name" jdbcType="CHAR"/>
     </resultMap>
 
+
     <sql id="Base_Column_List">
         id, user_id, train_id, pasenger_id, order_time, seat, price, state
     </sql>
@@ -159,4 +160,14 @@
             #{pasengerId,jdbcType=INTEGER}, #{orderTime,jdbcType=TIMESTAMP}, #{seat,jdbcType=VARCHAR},
             #{price,jdbcType=CHAR}, #{state,jdbcType=VARCHAR})
     </insert>
+
+    <select id="selectAllByState" resultMap="BaseResultMap"
+            parameterType="org.ironman.ticketsellingsystem.entity.TrainEntity">
+        select
+       *
+        from user_train,pasenger,train
+        where  state = #{state,jdbcType=VARCHAR}
+        and user_train.pasenger_id=pasenger.id
+        and user_train.train_id=train.id
+    </select>
 </mapper>

@@ -26,4 +26,7 @@ public interface UserTrainMapper {
 
     //插入
     int insertNoId(UserTrainEntity record);
+
+    //查询所有处于该状态的订单
+    List<UserTrainEntity> selectAllByState(String state);
 }

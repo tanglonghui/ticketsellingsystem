@@ -12,19 +12,26 @@ import java.util.List;
 
 @Component
 public class ScheduledTask {
-    public final static long ONE_Minute =  60 * 1000;
+    public final static long ONE_Minute = 60 * 1000;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date now;
     private Integer count0 = 1;
     private Integer count1 = 1;
     private Integer count2 = 1;
     @Resource
     UserTrainMapper userTrainMapper;
+
     @Scheduled(fixedRate = ONE_Minute)
 
     public void reportCurrentTime() throws InterruptedException {
-        UserTrainEntity entity=userTrainMapper.selectByPrimaryKey(1);
-//        List mlist=userTrainMapper.selectByState(entity);
-        System.out.println(String.format("---第%s次执行，当前时间为：%s", count0++, dateFormat.format(new Date()))+"--订单时间："+entity.getOrderTime());
+        List<UserTrainEntity> mlist = userTrainMapper.selectAllByState("0");
+        now = new Date();
+        for (UserTrainEntity bean : mlist) {
+            if (now.getTime() - bean.getOrderTime().getTime() > 15 * 60000) {
+                System.out.println(""+bean.getId()+"失效");
+            }
+        }
+        System.out.println(String.format("订单自动失效---第%s次执行，当前时间为：%s", count0++, dateFormat.format(now)));
 
     }
 
