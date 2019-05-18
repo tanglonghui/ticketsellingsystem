@@ -21,14 +21,19 @@ public class ScheduledTask {
     @Resource
     UserTrainMapper userTrainMapper;
 
+    //每分钟检测一次未支付的订单，看订单是否到期
     @Scheduled(fixedRate = ONE_Minute)
-
     public void reportCurrentTime() throws InterruptedException {
         List<UserTrainEntity> mlist = userTrainMapper.selectAllByState("0");
         now = new Date();
         for (UserTrainEntity bean : mlist) {
             if (now.getTime() - bean.getOrderTime().getTime() > 15 * 60000) {
-                System.out.println(""+bean.getId()+"失效");
+                bean.setState("2");
+                int i = userTrainMapper.updateByPrimaryKey(bean);
+                if (i == 1) {
+                    System.out.println("订单" + bean.getId() + "自动失效");
+                }
+
             }
         }
         System.out.println(String.format("订单自动失效---第%s次执行，当前时间为：%s", count0++, dateFormat.format(now)));
