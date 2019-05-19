@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public BaseResult updateState(UserTrainEntity entity) {
         BaseResult baseResult = new BaseResult();
-        int i = userTrainMapper.updateState(entity);
+        int i = userTrainMapper.updateByPrimaryKeySelective(entity);
         if (i == 1) {
             baseResult.setSuccess(true);
             baseResult.setMessage("更新成功");
@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
         int i = userTrainMapper.insertNoId(entity);
         if (i == 1) {
             baseResult.setSuccess(true);
-            baseResult.setMessage("购买成功");
+            baseResult.setMessage(""+entity.getId());
         } else {
             baseResult.setSuccess(false);
             baseResult.setMessage("购买失败");

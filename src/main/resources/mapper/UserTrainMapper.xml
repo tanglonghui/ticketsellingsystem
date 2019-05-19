@@ -152,7 +152,7 @@
         and user_train.train_id=train.id
     </select>
 
-    <insert id="insertNoId" parameterType="org.ironman.ticketsellingsystem.entity.UserTrainEntity">
+    <insert id="insertNoId" useGeneratedKeys="true" keyProperty="id" parameterType="org.ironman.ticketsellingsystem.entity.UserTrainEntity">
         insert into user_train (user_id, train_id,
             pasenger_id, order_time, seat,
             price, state)

@@ -29,7 +29,7 @@ public class OrderController {
     }
     /**
      * @param : userId state
-     * @Description TODO : 购买车票
+     * @Description TODO : 提交订单
      */
     @RequestMapping("/addOrder")
     public BaseResult addOrder(UserTrainEntity entity){
