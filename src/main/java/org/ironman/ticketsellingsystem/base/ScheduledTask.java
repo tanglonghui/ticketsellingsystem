@@ -1,6 +1,8 @@
 package org.ironman.ticketsellingsystem.base;
 
+import org.ironman.ticketsellingsystem.dao.TrainMapper;
 import org.ironman.ticketsellingsystem.dao.UserTrainMapper;
+import org.ironman.ticketsellingsystem.entity.TrainEntity;
 import org.ironman.ticketsellingsystem.entity.UserTrainEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,8 @@ public class ScheduledTask {
     private Integer count2 = 1;
     @Resource
     UserTrainMapper userTrainMapper;
+    @Resource
+    TrainMapper trainMapper;
 
     //每分钟检测一次未支付的订单，看订单是否到期
     @Scheduled(fixedRate = ONE_Minute)
@@ -41,7 +45,31 @@ public class ScheduledTask {
                     }
 
                 }
+                //释放占用的座位
+                TrainEntity trainEntity = trainMapper.selectByPrimaryKey(bean.getTrainId());
+                Integer seat;
+                //商务座
+                if (bean.getSeat().equals("0")) {
+                    seat = Integer.parseInt(trainEntity.getBusinessSeat());
+                    seat++;
+                    trainEntity.setBusinessSeat(seat.toString());
+                    trainMapper.updateByPrimaryKeySelective(trainEntity);
+                }
+                //一等座
+                else if (bean.getSeat().equals("1")) {
+                    seat = Integer.parseInt(trainEntity.getFirstSeat());
+                    seat++;
+                    trainEntity.setFirstSeat(seat.toString());
+                    trainMapper.updateByPrimaryKeySelective(trainEntity);
 
+                }
+                //二等座
+                else if (bean.getSeat().equals("2")) {
+                    seat = Integer.parseInt(trainEntity.getSecondSeat());
+                    seat++;
+                    trainEntity.setSecondSeat(seat.toString());
+                    trainMapper.updateByPrimaryKeySelective(trainEntity);
+                }
             }
         }
         //已支付，过了发车时间的订单
