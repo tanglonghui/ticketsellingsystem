@@ -31,7 +31,7 @@ public class UserController {
     @RequestMapping("/updateUser")
     public BaseResult updateUser(UserEntity userEntityEntity) {
 
-        return userService.register(userEntityEntity);
+        return userService.updateUser(userEntityEntity);
     }
     //获得用户信息
     @RequestMapping("/selectUser")

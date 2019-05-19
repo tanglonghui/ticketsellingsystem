@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public BaseResult updateUser(UserEntity userEntityEntity) {
         baseResult = new BaseResult();
-        if (userDao.updateUser(userEntityEntity) == 1) {
+        if (userDao.updateByPrimaryKeySelective(userEntityEntity) == 1) {
             baseResult.setSuccess(true);
             baseResult.setMessage("资料更改成功");
         } else {
